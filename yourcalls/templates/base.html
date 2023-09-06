@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% block styles %}{% endblock %}
+    <style>
+        .card-header{
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size:16px;
+            font-weight: normal;                     
+           
+          }
+      
+          .list-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            
+          }
+      
+          .list-container > a, .header-title > a{
+            padding: 0px 6px;
+            color: #FFF;
+          }
+
+
+    </style>
+
+  </head>
+  <body>
+    <div class="card-header bg-dark text-white">
+        <div class='header-title'>  <a href='{% url 'index' %}'>YouCallApp</a> </div>
+        <div class='list-container'>
+          {%if user.is_authenticated%}
+            <a href='logout'> Logout </a>
+          {% else %}
+          
+            
+            <a href='login'>Login</a>
+            <a href='register'> Register</a>
+        
+          {%endif%}
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
