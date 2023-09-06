@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import auth
+
 
 
 # Create your views here.
@@ -11,7 +13,7 @@ def index (request):
 
 
 def crm(request):
-    return render('crm.html')
+    return render(request, 'crm.html')
 
 
 #Login
