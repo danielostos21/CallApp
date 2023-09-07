@@ -1,9 +1,59 @@
 {% extends 'base.html' %}
 {% block title %}YourCallApp{% endblock %}
 
-{% block content %}
-     TODO: Landing Page
+{% block styles %}
+     <style>
 
+
+          .hero-figure{
+               background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+               width: 100vw;
+          }
+
+          .hero{
+               height: 90vh;
+               width: 100vw;
+          }
+
+          .hero-container{
+               height: 100%;
+               display: flex;
+               flex-wrap:wrap;
+               align-items:center;
+               justify-content: space-between;
+          }
+
+          .hero-left{
+               width: 40%;
+          }
+
+          .hero-right{
+               width:50%;
+          }
+
+     </style>
+{% endblock styles %}
+
+{% block content %}
+     <section class='hero container-fluid'>
+
+          {% comment %} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class='hero-figure'>
+               <path fill="#" fill-opacity="1" d="M0,0L26.7,21.3C53.3,43,107,85,160,122.7C213.3,160,267,192,320,218.7C373.3,245,427,267,480,234.7C533.3,203,587,117,640,69.3C693.3,21,747,11,800,32C853.3,53,907,107,960,144C1013.3,181,1067,203,1120,208C1173.3,213,1227,203,1280,208C1333.3,213,1387,235,1413,245.3L1440,256L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path>
+             </svg>
+           {% endcomment %}
+          <div class='hero-container container'>
+               <div class='hero-left container'>
+                    {% load static %}
+                    <img class='img-fluid' src="{% static 'video-call.png' %}">
+               </div>
+               <div class='hero-right container'>
+                    <h1>CRM and Dialer</h1>
+                    <p>Connect with your clients and deploy campaings with our software system that helps businesses manage their interactions with customers and potential customers.<p>
+                    <button type='cta' class='btn btn-secondary'>Start now</button>
+
+               </div>
+          </div>
+     </section>
 {% endblock content %}
 
 
