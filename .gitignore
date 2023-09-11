@@ -1,1 +1,11 @@
-C:\Users\Daniel\Desktop\DJANGO\CallApp\env
+# Exclude enviorment folder
+env
+
+# Exclude pycache and migrations
+yourcalls\crm\__pycache__
+yourcalls\crm\migrations
+yourcalls\yourcalls\__pycache__
+
+
+# Exclude db
+yourcalls\db.sqlite3

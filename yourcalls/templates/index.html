@@ -18,18 +18,34 @@
           .hero-container{
                height: 100%;
                display: flex;
-               flex-wrap:wrap;
+               
                align-items:center;
                justify-content: space-between;
           }
 
           .hero-left{
                width: 40%;
+               flex-wrap: wrap;
           }
 
           .hero-right{
                width:50%;
+               flex-wrap: wrap;
           }
+
+          @media only screen and (max-width: 600px) {
+               .hero-container{
+                    display:block;
+                    text-align:center;
+               }
+
+               .hero-left, .hero-right{
+                    width:80%;
+               }
+
+          }
+
+          
 
      </style>
 {% endblock styles %}
