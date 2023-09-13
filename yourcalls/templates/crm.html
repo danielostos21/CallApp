@@ -3,7 +3,60 @@
 
 {% block content %}
     
-    <h1>TODO: CRM<h2>
-    <p> If youre watching this youre logged in!</p>
+    <div class='main container'>
+        <br>
+        <div class="form container row">
+            <form method='POST'class='col-5' enctype='multipart/form-data'>
+                <h2>Upload your file</h2>
+                {% csrf_token %}
+                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name='file'/>
+                <br>
+                <br>
+
+                
+                <button type='submit' class='btn btn-success'>Submit</button>
+
+            </form>
+            
+        </div>
+       
+
+        
+       <br>
+       
+
+        <table class='table'>
+            <thead class=' table-dark'>
+                <th scope='col'>Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Address</th>
+                <th scope='col'>City</th>
+                <th scope='col'>State</th>
+                <th scope='col'>Zip Code</th>
+                <th scope='col'>Phone1</th>
+            </head>
+
+            <tbody>
+                
+                
+                {% for record in records  %}
+                <tr>
+                    <td>{{record.first_name}}</td>
+                    <td>{{record.last_name}}</td>
+                    <td>{{record.address}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.state}}</td>
+                    <td>{{record.zipcode}}</td>
+                    <td>{{record.phone1}}</td>                               
+                </tr>
+
+                {% endfor %}
+               
+            </tbody>
+
+        </table> <!--End table-->
+
+
+    </dov> <!--end main section-->
 
 {% endblock content %}

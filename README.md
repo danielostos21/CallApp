@@ -46,10 +46,13 @@ env/Scripts/activate
 
 
 
-#### Install django
+#### Install dependencies
 
 ```bash
 pip install django
+pip install Pillow
+pip install pandas
+
 
 ```
 

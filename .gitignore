@@ -2,10 +2,26 @@
 env
 
 # Exclude pycache and migrations
-yourcalls\crm\__pycache__
-yourcalls\crm\migrations
-yourcalls\yourcalls\__pycache__
+
+
+# Exclude media files
 
 
 # Exclude db
 yourcalls\db.sqlite3
+yourcalls/crm/migrations/__pycache__/__init__.cpython-311.pyc
+yourcalls/crm/migrations/__pycache__/0001_initial.cpython-311.pyc
+yourcalls/crm/migrations/__pycache__/0002_alter_record_phone2_alter_record_phone3.cpython-311.pyc
+yourcalls/crm/migrations/__pycache__/0003_alter_record_phone2_alter_record_phone3.cpython-311.pyc
+yourcalls/crm/migrations/__pycache__/0004_recordsfile.cpython-311.pyc
+yourcalls/crm/__pycache__/admin.cpython-311.pyc
+yourcalls/crm/__pycache__/apps.cpython-311.pyc
+yourcalls/crm/__pycache__/models.cpython-311.pyc
+yourcalls/crm/__pycache__/urls.cpython-311.pyc
+yourcalls/crm/__pycache__/views.cpython-311.pyc
+yourcalls/media/files/MOCK_DATA_1WI5PKw.csv
+yourcalls/media/files/MOCK_DATA_Dzqp268.csv
+yourcalls/media/files/MOCK_DATA_hLiABuU.csv
+yourcalls/media/files/MOCK_DATA.csv
+yourcalls/yourcalls/__pycache__/settings.cpython-311.pyc
+yourcalls/yourcalls/__pycache__/urls.cpython-311.pyc
