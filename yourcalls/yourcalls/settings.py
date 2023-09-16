@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p@o(el^l(qy@4xr7vpuf9rd^z_#u!z3lf5g6)9e2-ijo13zeuv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,7 +118,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS =STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'node_modules', '@twilio','voice-sdk', 'dist'),
+    os.path.join(BASE_DIR, 'node_modules', 'jquery', 'dist')
+)
 STATIC_ROOT=os.path.join(BASE_DIR,"/static/")
 
 

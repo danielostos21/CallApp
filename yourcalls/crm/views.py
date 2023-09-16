@@ -1,34 +1,73 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
-from . import models
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from . import models, credentials
 import pandas as pd
+from twilio.rest import Client
+from twilio.twiml.voice_response import VoiceResponse
+import os
 
 #Twilio access
+from twilio.jwt.access_token import AccessToken
+from twilio.jwt.access_token.grants import VoiceGrant
+
 
 
 # Create your views here.
-from twilio.rest import Client
-import os
-
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-account_sid = 'AC99315eae5eb0c27cb6dc3ad41223e7ae'
-auth_token = '42be11397b0b82ae2486e7d66c6575e8'
-client = Client(account_sid, auth_token)
 
 # Index
 # TODO: Landing pgae, create templates and designs
 def index (request):
-
-    # call = client.calls.create(
-    #     twiml='<Response><Dial><Conference>Test Call</Conference></Dial></Response>',
-    #     to='+14699273179',
-    #     from_='+18335371120'
-    # )
-
-    # print(call.sid)
+    """Landing page"""
     return render(request, 'index.html')
+
+
+#caller 
+
+def caller(request):
+    return render(request, 'caller.html')
+
+class GetToken(APIView):
+    """Returns Token to instantiate Twilio.Device"""
+
+    def get(self, request, *args, **kwargs):
+        identity = request.user.username
+        # Create access token with credentials
+        access_token = AccessToken(credentials.TWILIO_ACCOUNT_SID, credentials.TWILIO_API_KEY, credentials.TWILIO_API_SECRET, identity=identity)
+
+        # Create a Voice grant and add to token
+        voice_grant = VoiceGrant(
+            outgoing_application_sid=credentials.TWIML_APPLICATION_SID,
+            incoming_allow=True, # Optional: add to allow incoming calls
+        )
+        access_token.add_grant(voice_grant)
+
+        token = access_token.to_jwt()
+
+        data = {
+            'token' : token,
+        }
+        return Response(data)
+        
+
+# CALL RESPONSE
+class Call(APIView):
+    
+    @csrf_exempt
+    def post(self, request, *args, **kwargs):
+        """Returns TwiML instructions to Twilio's POST requests"""
+        response = VoiceResponse()
+        dial = response.dial(caller_id=credentials.TWILIO_NUMBER)
+
+    
+        dial.number('+15629914465')
+        
+        return HttpResponse(
+            str(response), content_type='application/xml; charset=utf-8'
+        )
 
 
 
@@ -54,7 +93,10 @@ def upload_DB(file_path):
 
 
 
-
+# Delete Data Base Function
+def delete_records(request):
+    models.Record.objects.all().delete()
+    return redirect('crm')
 
 # Control Records Management
 def crm(request):
@@ -65,10 +107,11 @@ def crm(request):
         file = request.FILES['file']
         obj = models.RecordsFile.objects.create(file = file)
         upload_DB(obj.file)
+        return redirect('crm')
 
 
 
-
+    
 
 
     return render(request, 'crm.html',{'records': records})

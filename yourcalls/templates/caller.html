@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="call-status" class="col-3 col-form-label">Status</label>
+            <div class="col-9">
+                <input id="call-status" class="form-control" type="text" placeholder="Connecting to Twilio..." readonly>
+            </div>  
+        </div>      
+
+        <button class="btn btn-lg btn-success start-button" onclick="start_device()">
+            Start
+        </button>
+
+        <button class="btn btn-lg btn-secondary lenny-button" onclick="call_lenny()">
+            Call Lenny
+        </button>
+        
+        <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">
+        Hang up
+        </button>
+    </div> 
+
+
+
+    
+   
+    {%load static%}
+    <script src="{% static 'twilio.min.js' %}"></script>
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src='{% static "caller1.js" %}'>    
+    </script>
+    
+
+{% endblock content %}
+
+
+    
+
+
+
+
