@@ -52,14 +52,24 @@ env/Scripts/activate
 pip install django
 pip install Pillow
 pip install pandas
+pip install djangorestframework
 
 
 ```
 
+### Install Node.Js SDK from twilio
+```bash
+cd yourcalls
+npm install @Twilio-voicesdk --save
+npm install jquery
+
+```
 
 ### Apply migrations
 
 ```bash
+
+python callapp/managae.py makemigrations crm
 python callapp/manage.py migrate
 ```
 
